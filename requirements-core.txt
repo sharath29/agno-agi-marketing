@@ -1,0 +1,38 @@
+# Core Dependencies Only - Working Version
+# This file contains the minimal dependencies needed to run the system
+
+# Core Framework (install without tools first)
+phidata>=2.4.0
+
+# LLM and AI Models
+openai>=1.0.0
+anthropic>=0.10.0
+
+# Vector Databases and Embeddings
+chromadb>=0.4.0
+sentence-transformers>=2.2.0
+
+# External API Integrations
+requests>=2.31.0
+httpx>=0.25.0
+
+# Data Processing
+pandas>=2.0.0
+numpy>=1.24.0
+pydantic>=2.5.0
+
+# Configuration and Environment
+python-dotenv>=1.0.0
+pydantic-settings>=2.1.0
+
+# Logging
+loguru>=0.7.0
+
+# Async support
+aioredis>=2.0.0
+
+# Database
+sqlalchemy>=2.0.0
+
+# Testing (optional for demo)
+pytest>=7.4.0
