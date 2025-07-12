@@ -6,7 +6,7 @@ A sophisticated multi-agent marketing automation system built with the [Agno fra
 
 ### 🤖 Intelligent Agent Architecture
 - **Marketing Expert**: Strategy development, campaign optimization, personalization
-- **Company Expert**: ICP validation, compliance rules, lead scoring  
+- **Company Expert**: ICP validation, compliance rules, lead scoring
 - **Resource Agent**: Multi-source lead harvesting and enrichment
 - **CRM Agent**: Data hygiene, deduplication, pipeline management
 - **Search Agent**: Real-time signal gathering and trend analysis
@@ -198,7 +198,7 @@ REDIS_URL=redis://localhost:6379/0
 The system supports multiple memory providers:
 
 - **Redis**: For fast short-term memory
-- **SQLite**: For persistent local storage  
+- **SQLite**: For persistent local storage
 - **ChromaDB**: For vector-based semantic memory
 
 ### Knowledge Management
@@ -273,7 +273,7 @@ Structured logging with multiple levels:
 
 Key metrics tracked:
 - Agent response times
-- API call success rates  
+- API call success rates
 - Memory usage and efficiency
 - Knowledge retrieval accuracy
 - Campaign conversion rates

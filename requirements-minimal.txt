@@ -1,6 +1,80 @@
-# Minimal working requirements for the demo
+# Minimal requirements for core functionality
+# Excludes agno and brave-search to avoid dependency conflicts
+
+# LLM and AI Models
 openai>=1.0.0
+anthropic>=0.10.0
+
+# Search and Knowledge
+duckduckgo-search>=4.0.0
+tavily-python>=0.3.0
+
+# Vector Databases and Embeddings
+chromadb>=0.4.0
+pinecone-client>=3.0.0
+faiss-cpu>=1.7.0
+sentence-transformers>=2.2.0
+
+# External API Integrations
 requests>=2.31.0
-python-dotenv>=1.0.0
+httpx>=0.25.2,<0.26.0
+aiohttp>=3.8.0
+
+# NewsAPI and Social Media
+newsapi-python>=0.2.6
+tweepy>=4.14.0
+linkedin-scraper>=2.11.0
+
+# CRM and Sales Tools
+hubspot-api-client>=8.0.0
+simple-salesforce>=1.12.0
+
+# Web Scraping and Data Collection
+beautifulsoup4>=4.12.0
+selenium>=4.15.0
+playwright>=1.40.0
+scrapy>=2.11.0
+
+# Data Processing and Analysis
+pandas>=2.0.0
+numpy>=1.24.0
 pydantic>=2.5.0
+
+# Database and Storage
+sqlalchemy>=2.0.0
+redis>=5.0.0
+psycopg2-binary>=2.9.0
+
+# Configuration and Environment
+python-dotenv>=1.0.0
+pydantic-settings>=2.1.0
+pyyaml>=6.0.0
+
+# Async and Concurrency
+asyncio-throttle>=1.0.0
+aioredis>=2.0.0
+
+# Monitoring and Observability
 loguru>=0.7.0
+prometheus-client>=0.19.0
+sentry-sdk>=1.38.0
+
+# Testing and Development
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-mock>=3.12.0
+black>=23.0.0
+flake8>=6.0.0
+mypy>=1.7.0
+
+# Caching and Performance
+cachetools>=5.3.0
+memory-profiler>=0.61.0
+
+# Workflow and DAG Export
+networkx>=3.2.0
+graphviz>=0.20.0
+
+# Security and Authentication
+cryptography>=41.0.0
+PyJWT>=2.8.0

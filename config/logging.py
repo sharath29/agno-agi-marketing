@@ -5,10 +5,10 @@ Provides structured logging with different outputs for development and productio
 """
 
 import sys
-import logging
 from pathlib import Path
+from typing import Any, Dict
+
 from loguru import logger
-from typing import Dict, Any
 
 from .settings import get_settings
 
@@ -16,10 +16,10 @@ from .settings import get_settings
 def setup_logging() -> None:
     """Set up application logging configuration."""
     settings = get_settings()
-    
+
     # Remove default handler
     logger.remove()
-    
+
     # Console logging for development
     if settings.debug:
         logger.add(
@@ -36,11 +36,11 @@ def setup_logging() -> None:
             level=settings.monitoring.log_level,
             serialize=True,
         )
-    
+
     # File logging
     log_dir = Path("logs")
     log_dir.mkdir(exist_ok=True)
-    
+
     logger.add(
         log_dir / "agno_marketing.log",
         rotation="1 day",
@@ -50,7 +50,7 @@ def setup_logging() -> None:
         backtrace=True,
         diagnose=True,
     )
-    
+
     # Error logging
     logger.add(
         log_dir / "errors.log",
@@ -61,7 +61,7 @@ def setup_logging() -> None:
         backtrace=True,
         diagnose=True,
     )
-    
+
     # Agent-specific logging
     logger.add(
         log_dir / "agents.log",
@@ -71,7 +71,7 @@ def setup_logging() -> None:
         retention="7 days",
         format="{time} | {level} | Agent: {extra[agent]} | {message}",
     )
-    
+
     # API call logging
     logger.add(
         log_dir / "api_calls.log",

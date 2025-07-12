@@ -8,27 +8,25 @@ import asyncio
 import sys
 from pathlib import Path
 
+from src.demo import main as demo_main
+
 # Add src to Python path
 sys.path.append(str(Path(__file__).parent / "src"))
 
-from src.demo import main as demo_main
-from src.config.logging import setup_logging
-
 
 def main():
-    """Main entry point."""
-    print("""
+    """Main entry point for Agno-AGI Marketing Automation System."""
+    print(
+        """
     ╔═══════════════════════════════════════════════════════════════╗
     ║               Agno-AGI Marketing Automation System            ║
     ║                                                               ║
-    ║   Intelligent multi-agent system for marketing automation     ║
-    ║   Built with Agno framework for production-ready campaigns    ║
+    ║   Intelligent multi-agent system for marketing automation    ║
+    ║   Built with Agno framework for production-ready campaigns   ║
     ╚═══════════════════════════════════════════════════════════════╝
-    """)
-    
-    # Setup logging
-    setup_logging()
-    
+    """
+    )
+
     # Run demo
     asyncio.run(demo_main())
 

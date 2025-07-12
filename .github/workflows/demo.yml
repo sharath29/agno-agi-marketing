@@ -15,24 +15,24 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    
+
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
-    
+
     - name: Install minimal dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements-minimal.txt
-    
+
     - name: Test simple demo
       run: |
         python src/simple_demo.py
       env:
         # Demo runs without API keys (mock mode)
         PYTHONPATH: .
-    
+
     - name: Validate project structure
       run: |
         test -f src/simple_demo.py

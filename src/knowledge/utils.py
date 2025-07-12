@@ -5,7 +5,8 @@ Provides convenient functions for agents to access marketing knowledge,
 best practices, and templates.
 """
 
-from typing import Dict, List, Optional, Any
+from typing import Any, Dict, List, Optional
+
 from .knowledge_manager import marketing_knowledge_base, rag_retriever
 
 
@@ -15,13 +16,11 @@ async def get_marketing_guidance(topic: str) -> str:
     return guidance
 
 
-async def search_marketing_knowledge(query: str, category: Optional[str] = None) -> List[Dict[str, Any]]:
+async def search_marketing_knowledge(
+    query: str, category: Optional[str] = None
+) -> List[Dict[str, Any]]:
     """Search marketing knowledge base."""
-    return await marketing_knowledge_base.search_knowledge(
-        query=query,
-        category=category,
-        limit=3
-    )
+    return await marketing_knowledge_base.search_knowledge(query=query, category=category, limit=3)
 
 
 async def get_email_templates() -> List[Dict[str, str]]:
@@ -47,8 +46,7 @@ async def get_campaign_best_practices(campaign_type: str) -> str:
 async def enhance_agent_prompt(base_prompt: str, knowledge_context: str) -> str:
     """Enhance an agent prompt with relevant knowledge."""
     return await rag_retriever.enhance_prompt_with_knowledge(
-        base_prompt=base_prompt,
-        knowledge_query=knowledge_context
+        base_prompt=base_prompt, knowledge_query=knowledge_context
     )
 
 
@@ -59,5 +57,5 @@ async def add_campaign_insights(campaign_type: str, insights: Dict[str, Any]) ->
         what_worked=insights.get("successes", []),
         what_didnt_work=insights.get("failures", []),
         metrics=insights.get("metrics", {}),
-        recommendations=insights.get("recommendations", [])
+        recommendations=insights.get("recommendations", []),
     )
