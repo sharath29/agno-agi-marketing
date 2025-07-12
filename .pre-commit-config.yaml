@@ -1,0 +1,106 @@
+# Pre-commit configuration for Agno-AGI Marketing Automation System
+# See https://pre-commit.com for more information
+
+repos:
+  # Black - Python code formatter
+  - repo: https://github.com/psf/black
+    rev: 24.3.0
+    hooks:
+      - id: black
+        language_version: python3
+        args: [--line-length=100]
+        exclude: ^(venv/|\.venv/|env/|\.env/)
+
+  # isort - Import sorting
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        args: [--profile=black, --line-length=100]
+        exclude: ^(venv/|\.venv/|env/|\.env/)
+
+  # flake8 - Linting
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.1.1
+    hooks:
+      - id: flake8
+        args: [--max-line-length=100, --extend-ignore=E203,W503,E501]
+        exclude: ^(venv/|\.venv/|env/|\.env/)
+
+  # pyupgrade - Upgrade syntax for newer Python versions
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.15.2
+    hooks:
+      - id: pyupgrade
+        args: [--py38-plus]
+        exclude: ^(venv/|\.venv/|env/|\.env/)
+
+  # autoflake - Remove unused imports and variables
+  - repo: https://github.com/PyCQA/autoflake
+    rev: v2.3.1
+    hooks:
+      - id: autoflake
+        args:
+          - --remove-all-unused-imports
+          - --remove-unused-variables
+          - --remove-duplicate-keys
+          - --in-place
+        exclude: ^(venv/|\.venv/|env/|\.env/)
+
+  # General file checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: ^(venv/|\.venv/|env/|\.env/)
+      - id: end-of-file-fixer
+        exclude: ^(venv/|\.venv/|env/|\.env/)
+      - id: check-yaml
+        exclude: ^(venv/|\.venv/|env/|\.env/)
+      - id: check-json
+        exclude: ^(venv/|\.venv/|env/|\.env/)
+      - id: check-toml
+        exclude: ^(venv/|\.venv/|env/|\.env/)
+      - id: check-merge-conflict
+      - id: check-case-conflict
+      - id: check-added-large-files
+        args: [--maxkb=1000]
+      - id: mixed-line-ending
+        args: [--fix=lf]
+
+  # mypy - Static type checking
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.9.0
+    hooks:
+      - id: mypy
+        additional_dependencies:
+          - types-requests
+          - types-redis
+          - pydantic
+        args: [--ignore-missing-imports, --no-strict-optional]
+        exclude: ^(venv/|\.venv/|env/|\.env/|tests/)
+
+  # bandit - Security linting
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.8
+    hooks:
+      - id: bandit
+        args: [-c, pyproject.toml]
+        additional_dependencies: ["bandit[toml]"]
+        exclude: ^(venv/|\.venv/|env/|\.env/|tests/)
+
+# Global excludes
+exclude: |
+  (?x)^(
+      venv/.*|
+      \.venv/.*|
+      env/.*|
+      \.env/.*|
+      .*\.pyc|
+      __pycache__/.*|
+      \.git/.*|
+      data/.*|
+      logs/.*|
+      \.pytest_cache/.*|
+      \.mypy_cache/.*
+  )$
